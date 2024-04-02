@@ -3,7 +3,7 @@ public class LegoBrick {
     private int size;
     private String color;
 
-    public LegoBrick(int size, String color)
+    public LegoBrick(int size, String color) //LegoBrick Object
     {
         this.size = size;
         this.color = color;
@@ -27,5 +27,5 @@ public class LegoBrick {
     }
 
 
-
+//^^ all the getters/setters
 }
