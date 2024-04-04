@@ -4,18 +4,22 @@ int size = 1;
 
 
 
-public BrickMaker(int size, String color){
-    super(size,color); }
+public BrickMaker(int size, String color, String stud){
+    super(size,color, stud); }
 
 
 
-    public static void CustomizeBrick(int size, String color){
-    System.out.println("size or color:");
-    String brickCustomizeOption  = BrickMaker.nextLine();
+    public static void CustomizeBrick(int size, String color, String stud){
+        Scanner scanner = new Scanner;
+    System.out.print("Click size or color to customize:");
+
+    String brickCustomizeOption  = scanner.nextLine();
     if(brickCustomizeOption.equals("color")){
-
+        System.out.println("Which color do you choose:");
     }
-if(brickCustomizeOption.equals(size)){
+else if(brickCustomizeOption.equals("size")){
+        System.out.println("Enter new size:");
+    }
 
     }
 }

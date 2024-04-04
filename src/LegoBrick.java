@@ -3,10 +3,13 @@ public class LegoBrick {
     private int size;
     private String color;
 
-    public LegoBrick(int size, String color) //LegoBrick Object
+    private String stud;
+
+    public LegoBrick(int size, String color, String stud) //LegoBrick Object
     {
         this.size = size;
         this.color = color;
+        this.stud = stud;
     }
 
     public String getColor() {
