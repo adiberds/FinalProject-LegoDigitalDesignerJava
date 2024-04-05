@@ -9,17 +9,23 @@ public BrickMaker(int size, String color, String stud){
 
 
 
-    public static void CustomizeBrick(int size, String color, String stud){
-        Scanner scanner = new Scanner;
+    public void CustomizeBrick(int size, String color, String stud){
+        Scanner scanner = new Scanner(System.in);
     System.out.print("Click size or color to customize:");
 
     String brickCustomizeOption  = scanner.nextLine();
-    if(brickCustomizeOption.equals("color")){
-        System.out.println("Which color do you choose:");
+    if(brickCustomizeOption.equalsIgnoreCase("color")) {
+        System.out.println("Enter new color:");
+        String newColor = scanner.nextLine();
+        LegoBrick.setColor(newColor);
     }
 else if(brickCustomizeOption.equals("size")){
         System.out.println("Enter new size:");
+        String newSize = scanner.nextLine();
+        LegoBrick.setSize(newSize);
+        System.out.println("Size Updated!")
     }
+else BrickMaker.CustomizeBrick;
 
     }
 }
