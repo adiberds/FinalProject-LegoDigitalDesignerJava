@@ -1,10 +1,10 @@
 import java.util.Scanner;
-public class BrickMaker extends LegoBrick {
+public class CustomLego extends LegoBrick {
     private int size = 1;
 
 
 
-    public BrickMaker(int size, String color, String stud) {
+    public CustomLego(int size, String color, String stud) {
         super(size, color, stud);
     }
 

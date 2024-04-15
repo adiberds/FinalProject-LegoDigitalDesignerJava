@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-public class LegoSet {
+public class LegoMosaicSet {
 private ArrayList<LegoBrick> brickSet;
-public LegoSet(){
+public LegoMosaicSet(){
     brickSet = new ArrayList<>();
 }
-//declaring lego set which is a ArrayList
+//declaring lego mosaic which is a ArrayList
 
 }

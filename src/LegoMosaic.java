@@ -1,11 +1,12 @@
-public class LegoGrid {
+public class LegoMosaic{
 
     private LegoBrick[][] grid;
 
-    public LegoGrid(int rows, int cols){
+    public LegoMosaic(int rows, int cols){
         grid = new LegoBrick[rows][cols];
     }
     //making a object LegoBrick in the grid system
+
 
 public void addBrick(LegoBrick brick, int row, int col){
     if (row >= 0 && row < grid.length && col >= 0 && col < grid[0].length) {
@@ -24,5 +25,8 @@ public void addBrick(LegoBrick brick, int row, int col){
         }
     } //removeBrick which removes a brick in the grid when needed, and for the else I did the same thing as above method
     // however more code will be added for situations in which a brick above another brick wants to be kept however the brick under doesn't
+
+
+
 
 }
