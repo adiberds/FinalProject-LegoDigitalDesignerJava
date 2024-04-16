@@ -1,9 +1,15 @@
 public class PartsCount extends LegoBrick {
 
 
-    public static int parts;
+    public int parts;
 
-    public static int displayParts() {
+
+    public PartsCount(parts, studs){
+        super(studs);
+    }
+
+
+    public int displayParts() {
         return parts;
 
     }
