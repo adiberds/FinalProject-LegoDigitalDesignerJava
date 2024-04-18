@@ -1,6 +1,15 @@
-import javax.swing.*;
-import java.awt.*;
-
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Point;
+import java.util.ArrayList;
+import java.awt.Font;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 public class MainFrame {
     public static void main(String[] args) {
         JFrame frame = new JFrame("LEGO Digital Mosaic Designer");
@@ -22,13 +31,12 @@ public class MainFrame {
         frame.setVisible(true);
 
 
-        ImageIcon background=new ImageIcon("images/Application.jpg");
-        Image img=background.getImage();
-        Image temp=img.getScaledInstance(500,600,Image.SCALE_SMOOTH);
-        background=new ImageIcon(temp);
+        ImageIcon background = new ImageIcon("images/Application.jpg");
         JLabel back=new JLabel(background);
         back.setLayout(null);
         back.setBounds(0,0,500,600);
+
+
 
     }
 }

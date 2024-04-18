@@ -1,9 +1,11 @@
 public class LegoBrick {
 
-    private int size;
-    private String color;
+    public int size;
+    public String color;
 
-    private String stud;
+
+
+    public String stud;
 
     public LegoBrick(int size, String color, String stud) //LegoBrick Object
     {
@@ -19,7 +21,9 @@ public class LegoBrick {
     public int getSize() {
         return size;
     }
-
+    public String getStud() {
+        return stud;
+    }
 
     public void setColor(String color) {
         this.color = color;
