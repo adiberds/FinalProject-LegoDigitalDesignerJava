@@ -2,9 +2,8 @@ import java.util.ArrayList;
 
 public class LegoMosaicSet extends LegoBrick implements LegoMosaic {
 private ArrayList<LegoBrick> brickSet;
-public LegoMosaicSet(){
+public LegoMosaicSet() {
     brickSet = new ArrayList<>();
-    super(size, color, stud);
 }
 //declaring lego mosaic which is a ArrayList
 
@@ -20,7 +19,8 @@ public void removeBrick(LegoBrick brick)
 public void displayBrick()
 {
     for(LegoBrick brick : brickSet){
-        brick.
+        System.out.println("Size:" + brick.size + " " + "Color:" + brick.color +  " " + brick.stud);
+
 
     }
 }

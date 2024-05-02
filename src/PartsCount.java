@@ -1,4 +1,4 @@
-public class PartsCount extends LegoBrick {
+public class PartsCount extends LegoMosaic {
 
 
 
@@ -20,7 +20,7 @@ public class PartsCount extends LegoBrick {
 
 
         public int partsCalculator(){
-            getStud();
+            if(LegoMosaic.contains());
         }
 
         public int getParts(){
