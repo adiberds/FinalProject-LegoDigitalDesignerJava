@@ -5,13 +5,10 @@ public class PartsCount extends LegoMosaic {
     public int parts;
 
 
-    public PartsCount(parts, int size, String color, String stud){
+    public PartsCount(int parts, int size, String color,){
         this.parts = parts;
-        super(stud);
     }
-    public int getParts() {
-        return parts;
-    }
+
 
 
     public int displayParts() {
@@ -19,13 +16,8 @@ public class PartsCount extends LegoMosaic {
 
 
 
-        public int partsCalculator(){
-            if(LegoMosaic.contains());
-        }
 
-        public int getParts(){
-            getParts();
-        }
+
 
     }
 

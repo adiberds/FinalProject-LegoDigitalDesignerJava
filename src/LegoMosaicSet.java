@@ -19,7 +19,7 @@ public void removeBrick(LegoBrick brick)
 public void displayBrick()
 {
     for(LegoBrick brick : brickSet){
-        System.out.println("Size:" + brick.size + " " + "Color:" + brick.color +  " " + brick.stud);
+        System.out.println("Size:" + brick.size + " " + "Color:" + brick.color);
 
 
     }

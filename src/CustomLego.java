@@ -5,7 +5,7 @@ public class CustomLego extends LegoBrick {
 
 
     public CustomLego(int size, String color, String stud) {
-        super(size, color, stud);
+        super(size, color);
     }
 
 
