@@ -1,10 +1,3 @@
-import java.awt.event.MouseListener;
-import java.awt.event.MouseEvent;
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.Point;
-import java.util.ArrayList;
 import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,10 +11,12 @@ public class MainFrame {
         frame.setLayout(null);
         frame.setResizable(false);
 
+
         JLabel label = new JLabel("Welcome to LEGO Digital Mosaic Designer");
         label.setBounds(480,-100,1500,1000);
         frame.add(label);
         label.setFont(new Font("Papyrus", Font.BOLD, 50));
+
 
 
         JButton button = new JButton("Start Design");
@@ -31,12 +26,12 @@ public class MainFrame {
         frame.setVisible(true);
 
 
-        ImageIcon background = new ImageIcon("images/Application.jpg");
-        JLabel back=new JLabel(background);
+
+
+
+        JLabel backround = new JLabel("image/Application.jpg");
+        JLabel back=new JLabel();
         back.setLayout(null);
         back.setBounds(0,0,500,600);
 
-
-
-    }
-}
+    }}
