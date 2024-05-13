@@ -1,37 +1,43 @@
-import java.awt.Font;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-public class MainFrame {
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("LEGO Digital Mosaic Designer");
-        frame.setSize(10000,10000);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-        frame.setResizable(false);
+import javax.swing.*;
+import java.awt.*;
+
+
+public class MainFrame extends JFrame {
+
+
+    public MainFrame() {
+        setTitle("LEGO Digital Mosaic Designer");
+        setSize(1000, 600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+
+
+
+        JLabel backgroundLabel = new JLabel(new ImageIcon("images/legosymbol.webg"));
+        backgroundLabel.setLayout(new FlowLayout());
+
+
 
 
         JLabel label = new JLabel("Welcome to LEGO Digital Mosaic Designer");
-        label.setBounds(480,-100,1500,1000);
-        frame.add(label);
-        label.setFont(new Font("Papyrus", Font.BOLD, 50));
+        label.setFont(new Font("Papyrus", Font.BOLD, 30));
+        backgroundLabel.add(label);
+
+
+        JButton button = new JButton("Start Building");
+        backgroundLabel.add(button);
 
 
 
-        JButton button = new JButton("Start Design");
-        button.setBounds(850, 500, 150, 30);
-        frame.add(button);
-
-        frame.setVisible(true);
+        setContentPane(backgroundLabel);
 
 
+        setVisible(true);
+    }
 
 
-
-        JLabel backround = new JLabel("image/Application.jpg");
-        JLabel back=new JLabel();
-        back.setLayout(null);
-        back.setBounds(0,0,500,600);
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new MainFrame());
     }}
