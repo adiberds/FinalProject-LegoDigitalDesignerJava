@@ -4,12 +4,12 @@ public class CustomLego extends LegoBrick {
 
 
 
-    public CustomLego(int size, String color, String stud) {
+    public CustomLego(int size, String color) {
         super(size, color);
     }
 
 
-    public void customizeBrick(int size, String color, String stud) {
+    public void customizeBrick(int size, String color) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Click size or color to customize:");
 
@@ -25,7 +25,7 @@ public class CustomLego extends LegoBrick {
             super.setSize(newSizeInt);
             System.out.println("Size Updated!");
         } else {
-            customizeBrick(size, color, stud);
+            customizeBrick(size, color);
         }
     }
 }
