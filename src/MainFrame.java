@@ -2,6 +2,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+import javax.sound.sampled.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+
 class Switch_Frame implements ActionListener
 {
     static JFrame frame1;
@@ -12,6 +19,10 @@ class Switch_Frame implements ActionListener
     //Driver function
     public static void main(String args[])
     {
+        String filepath = "src/LEGO Digital Mosaic Designer Main Theme.wav";
+        PlayMusic(filepath);
+
+
         //Create frame 1
         frame1 = new JFrame("LEGO Digital Mosaic Designer");
         frame1.setSize(1000,600);
@@ -45,6 +56,21 @@ class Switch_Frame implements ActionListener
         backgroundLabel.add(label);
 
     }
+public static void PlayMusic(String location){
+        try {
+            File musicPath = new File(location);
+            if (musicPath.exists()) {
+                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInput);
+                clip.start();
+            } else {
+                return;
+            }
+        } catch (Exception e){
+            System.out.println(e);
+        }
+}
 
     public void actionPerformed(ActionEvent e)
     {
