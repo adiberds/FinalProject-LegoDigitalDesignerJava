@@ -1,4 +1,3 @@
-/*Java Program to switch between frames using buttons*/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -9,104 +8,82 @@ import javax.sound.sampled.*;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
-class Switch_Frame implements ActionListener
-{
-    static JFrame frame1;
-    static JFrame frame2;
-    static JButton next;
-    static JButton close;
-    static JButton back;
-    //Driver function
-    public static void main(String args[])
-    {
-        String filepath = "src/LEGO Digital Mosaic Designer Main Theme.wav";
-        PlayMusic(filepath);
+class MainFrame implements ActionListener
+{ static JFrame mainFrame;
+    static JButton startButton;
+    static JButton closeButton;
+    static Clip clip;
 
+    public static void main(String[] args) {
+        // Play background music
+        playMusic("/LEGO Digital Mosaic Designer Main Theme.wav"); // Ensure the leading slash
 
-        //Create frame 1
-        frame1 = new JFrame("LEGO Digital Mosaic Designer");
-        frame1.setSize(1000,600);
-        frame1.setLayout(null);
-        frame1.setBackground(Color.white);
-        //Create next and close buttons
-        next = new JButton("Start Building (64 x 64)");
-        close = new JButton("Close");
-        next.setBounds(75,50,100,50);
-        close.setBounds(75,150,100,50);
+        // Create the main frame
+        mainFrame = new JFrame("LEGO Digital Mosaic Designer");
+        mainFrame.setSize(1000, 600);
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame1.add(next);
-        frame1.add(close);
+        // Create the background panel
+        JPanel backgroundPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                ImageIcon icon = new ImageIcon(MainFrame.class.getResource("/background-image.jpg"));
+                Image image = icon.getImage();
+                g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        backgroundPanel.setLayout(new FlowLayout());
 
-        Switch_Frame obj=new Switch_Frame();
+        // Create buttons
+        startButton = new JButton("Start Building (64 x 64)");
+        closeButton = new JButton("Close");
 
-        next.addActionListener(obj);
-        close.addActionListener(obj);
-        frame1.setVisible(true);
+        // Set button sizes
+        startButton.setPreferredSize(new Dimension(200, 50));
+        closeButton.setPreferredSize(new Dimension(200, 50));
 
+        // Add buttons to the panel
+        backgroundPanel.add(startButton);
+        backgroundPanel.add(closeButton);
 
+        // Add action listeners
+        MainFrame obj = new MainFrame();
+        startButton.addActionListener(obj);
+        closeButton.addActionListener(obj);
 
-        JLabel backgroundLabel = new JLabel(new ImageIcon("images/legosymbol.webg"));
-        backgroundLabel.setLayout(new FlowLayout());
+        // Add the panel to the frame
+        mainFrame.add(backgroundPanel);
+        mainFrame.setVisible(true);
 
-
-
-
+        // Display welcome message
         JLabel label = new JLabel("Welcome to LEGO Digital Mosaic Designer");
         label.setFont(new Font("Papyrus", Font.BOLD, 30));
-        backgroundLabel.add(label);
-
+        backgroundPanel.add(label);
     }
-public static void PlayMusic(String location){
+
+    public static void playMusic(String fileName) {
         try {
-            File musicPath = new File(location);
+            // Load the resource using the class loader
+            File musicPath = new File(MainFrame.class.getResource(fileName).getFile());
             if (musicPath.exists()) {
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
+                clip = AudioSystem.getClip();
                 clip.open(audioInput);
                 clip.start();
+                clip.loop(Clip.LOOP_CONTINUOUSLY); // Loop the music
             } else {
-                return;
+                System.out.println("Music file not found!");
             }
-        } catch (Exception e){
-            System.out.println(e);
-        }
-}
-
-    public void actionPerformed(ActionEvent e)
-    {
-        String button=e.getActionCommand();
-        if(button.equals("Next"))
-        {
-            create_frame2();
-        }
-        if(button.equals("Close"))
-        {
-            frame1.dispose();
-        }
-        if(button.equals("Back"))
-        {
-            frame2.dispose();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
-    //function to create Frame 2
-    public static void create_frame2()
-    {
-        //Create frame 2
-        frame2 = new JFrame("Frame 2");
-        frame2.setSize(250,250);
-        frame2.setLayout(null);
-        frame2.setBackground(Color.white);
-        //Create back button
-        back = new JButton("Back");
-        back.setBounds(75,100,100,50);
-        //Add the button to frame 2
-        frame2.add(back);
-        //Create an object
-        Switch_Frame obj=new Switch_Frame();
-        //Associate ActionListener with the buttons
-        back.addActionListener(obj);
-        //Display frame 2
-        frame2.setVisible(true);
-    }
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
+
