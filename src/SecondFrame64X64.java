@@ -1,33 +1,47 @@
-import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
-import java.awt.*;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
 
-
-public class SecondFrame64X64{
-
-
+class SecondFrame64X64 extends JPanel
+{
     private static final int SIDE = 64;
     private static final int BUTTON_WIDTH = 13;
 
-JFrame frame = new JFrame();
-JButton[][] LegoGrid;
-
-public SecondFrame64X64(int width, int length){
-    JFrame frame = new JFrame("LEGO Mosaic");
-    frame.setLayout(new GridLayout(SIDE,SIDE, 1, 1));
-    LegoGrid = new JButton[width][length];
-    for(int y = 0; y <SIDE; y++){
-        for(int x = 0; x<SIDE; x++){
-            LegoGrid[x][y] = new JButton();
-            frame.add(LegoGrid[x][y]);
+    public SecondFrame64X64()
+    {
+        setLayout(new GridLayout(SIDE, SIDE, 0, 0));
+        for (int i = 0; i < SIDE; i++)
+        {
+            for (int j = 0; j < SIDE; j++)
+            {
+                JButton btn = new JButton();
+                btn.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_WIDTH));
+                add(btn);
+            }
         }
-
-
     }
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.pack();
-    frame.setVisible(true);
-}
-public static void main(String[] args){new SecondFrame64X64(100, 100);
-}
+
+    private static void createAndShowUI()
+    {
+        JFrame frame = new JFrame("Start Building Your Mosaic!");
+        frame.getContentPane().add(new SecondFrame64X64());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args)
+    {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                createAndShowUI();
+            }
+        });
+    }
 }
