@@ -2,20 +2,33 @@ import java.util.HashMap;
 
 public class LegoMosaic {
 
-    private HashMap<PartsCount, LegoBrick> grid;
+    private HashMap<String, LegoBrick> grid;
+    private String chosenColor;
 
-    public LegoMosaic(PartsCount, LegoBrick) {
-        grid = new LegoMosaic<PartsCount, LegoBrick>;
+    public LegoMosaic()
+    {
+        grid = new HashMap<>();
+        chosenColor = "white";
     }
     //making a object LegoBrick in the grid system
 
 
-    public void addBrick(LegoBrick brick, int row, int col) {
-        grid.put(row + "," + col, brick);
+    public void addBrick(int row, int col, String color) {
+        String key = row + "," + col;
+        LegoBrick brick = new LegoBrick(color);
+        grid.put(key, brick);
     }
 
 
-    public void removeBrick(LegoBrick brick, int row, int col) {
-grid.remove(row + "," + col, brick);
+    public void removeBrick(int row, int col) {
+        String key = row + "." + col;
+        grid.remove(key);
+    }
+
+    public void setChosenColor(String color){
+        chosenColor = color;
+    }
+    public String setChosenColor(){
+        return chosenColor;
     }
 }
