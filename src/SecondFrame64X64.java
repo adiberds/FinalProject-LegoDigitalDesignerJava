@@ -1,55 +1,62 @@
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Insets;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
-class SecondFrame64X64 extends JPanel {
-    private static final int SIDE = 64;
-    private static final int BUTTON_WIDTH = 13;
-    private LegoMosaic legoMosaic;
+public class SecondFrame64X64 extends JPanel {
+    private JPanel gameGrid;
 
-    public SecondFrame64X64(LegoMosaic legoMosaic) {
-        this.legoMosaic = legoMosaic;
-        setLayout(new GridLayout(SIDE, SIDE, 0, 0));
-        createGrid();
+    public SecondFrame64X64() {
+        initUI();
     }
 
-    public void createGrid() {
-        URL imageURL = getClass().getResource("/images/Dark_Stone_Grey(13X13).png");
-        Image img = null;
-        try {
-            img = ImageIO.read(imageURL);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        ImageIcon icon = new ImageIcon(img);
-        for (int i = 0; i < SIDE; i++) {
-            for (int j = 0; j < SIDE; j++) {
+    private final void initUI() {
+        setLayout(new BorderLayout(5, 5));
+        setBackground(Color.YELLOW);
+        setBorder(new EmptyBorder(4, 4, 4, 4));
+        createMap(64, 64);
+        add(gameGrid);
+
+        JPanel controlsConstrain = new JPanel(new BorderLayout(4, 4));
+        add(controlsConstrain, BorderLayout.LINE_END);
+        controlsConstrain.setBackground(Color.GREEN);
+
+        JPanel controls = new JPanel(new GridLayout(0, 1, 0, 25));
+        controlsConstrain.add(controls, BorderLayout.PAGE_START);
+        controls.setBackground(Color.CYAN);
+        controls.setBorder(new EmptyBorder(40, 20, 20, 20));
+
+    }
+
+    public void createMap(int maxX, int maxY) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int squareSize = Math.min(screenSize.width / 2, screenSize.height / 2) / Math.max(maxX, maxY);
+        int gridWidth = squareSize * maxX;
+        int gridHeight = squareSize * maxY;
+
+        gameGrid = new JPanel(new GridLayout(maxX, maxY, 0, 0));
+        gameGrid.setBackground(Color.YELLOW);
+
+        ImageIcon icon = new ImageIcon("images/Studgrid.jpg");
+
+        for (int i = 0; i < maxX; i++) {
+            for (int j = 0; j < maxY; j++) {
                 JButton button = new JButton(icon);
-                button.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_WIDTH));
-                button.setMargin(new Insets(0, 0, 0, 0));
-                button.setBorder(null);
-                int row = i;
-                int col = j;
-                button.addActionListener(e -> legoMosaic.addBrick(row, col, "default"));
-                add(button);
+                button.setPreferredSize(new Dimension(squareSize, squareSize));
+                String name = String.format("[%d, %d]", i, j);
+                button.setName(name);
+                gameGrid.add(button);
             }
         }
     }
 
-    private static void createAndShowUI(LegoMosaic legoMosaic) {
-        JFrame frame = new JFrame("Start Building Your Mosaic!");
-        frame.getContentPane().add(new SecondFrame64X64(legoMosaic)); // Pass legoMosaic to the constructor
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Start Building Your Mosaic!");
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.getContentPane().add(new SecondFrame64X64());
+            frame.pack();
+            frame.setLocationRelativeTo(null);
+            frame.setVisible(true);
+        });
     }
 }

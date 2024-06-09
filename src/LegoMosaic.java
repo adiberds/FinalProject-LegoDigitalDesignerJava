@@ -13,17 +13,13 @@ public class LegoMosaic {
     //making a object LegoBrick in the grid system
 
 
-    public void addBrick(int row, int col, String color) {
-        String key = row + "," + col;
-        LegoBrick brick = new LegoBrick(color);
-        grid.put(key, brick);
+    public void addBrick(LegoBrick brick, int row, int col) {
+
+        grid.put(row + "," + col,brick);
     }
 
 
-    public void removeBrick(int row, int col) {
-        String key = row + "." + col;
-        grid.remove(key);
-    }
+
 
     public void setChosenColor(String color){
         chosenColor = color;

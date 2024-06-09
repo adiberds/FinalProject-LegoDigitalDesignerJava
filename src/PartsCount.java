@@ -5,7 +5,7 @@ public class PartsCount extends LegoMosaic {
     public int parts;
 
 
-    public PartsCount(int parts, int size, String color,){
+    public PartsCount(int parts, int size, String color){
         this.parts = parts;
     }
 
