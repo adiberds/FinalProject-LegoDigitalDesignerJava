@@ -4,8 +4,15 @@ import javax.swing.border.EmptyBorder;
 
 public class SecondFrame64X64 extends JPanel {
     private JPanel gameGrid;
+    private PartsCount partsCount;
+    private LegoMosaic legoMosaic;
+    private String selectedColorImagePath;
+
 
     public SecondFrame64X64() {
+        legoMosaic = new LegoMosaic();
+        partsCount = new PartsCount(0);
+
         initUI();
     }
 
@@ -25,6 +32,9 @@ public class SecondFrame64X64 extends JPanel {
         controls.setBackground(Color.CYAN);
         controls.setBorder(new EmptyBorder(40, 20, 20, 20));
 
+        selectedColorImagePath = "StudImages/Bright_Blue.jpg";
+
+        controls.add(new ColorPanel(legoMosaic, this));
     }
 
     public void createMap(int maxX, int maxY) {
@@ -36,17 +46,25 @@ public class SecondFrame64X64 extends JPanel {
         gameGrid = new JPanel(new GridLayout(maxX, maxY, 0, 0));
         gameGrid.setBackground(Color.YELLOW);
 
-        ImageIcon icon = new ImageIcon("images/Studgrid.jpg");
-
         for (int i = 0; i < maxX; i++) {
             for (int j = 0; j < maxY; j++) {
-                JButton button = new JButton(icon);
+                JButton button = new JButton();
                 button.setPreferredSize(new Dimension(squareSize, squareSize));
                 String name = String.format("[%d, %d]", i, j);
                 button.setName(name);
+                button.addActionListener(e -> {
+                    JButton clickedButton = (JButton) e.getSource();
+                    ImageIcon icon = new ImageIcon(selectedColorImagePath);
+                    clickedButton.setIcon(icon);
+                    partsCount.incrementParts(); // Increment parts count
+                });
                 gameGrid.add(button);
             }
         }
+    }
+
+    public void setSelectedColorImageFile(String imagePath) {
+        this.selectedColorImagePath = imagePath;
     }
 
     public static void main(String[] args) {
@@ -60,3 +78,4 @@ public class SecondFrame64X64 extends JPanel {
         });
     }
 }
+

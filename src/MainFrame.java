@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame {
-    public static void main(String[] args) {
+     {
         JFrame mainFrame = new JFrame("LEGO Digital Mosaic Designer");
         mainFrame.setSize(1000, 600);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

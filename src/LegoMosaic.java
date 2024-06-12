@@ -21,10 +21,10 @@ public class LegoMosaic {
 
 
 
-    public void setChosenColor(String color){
+    public void getChosenColor(String color){
         chosenColor = color;
     }
-    public String setChosenColor(){
+    public String getChosenColor(){
         return chosenColor;
     }
 }
